@@ -1,7 +1,7 @@
 CREATE TABLE `Produto` (
 	`Nome` varchar(50) NOT NULL,
 	`Descricao` varchar(100) NOT NULL,
-	`Imagem` blob(4294967295) NOT NULL,
+	`Imagem` varchar(500) NOT NULL,
 	`Valor` FLOAT NOT NULL,
 	`id` INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`id`)
