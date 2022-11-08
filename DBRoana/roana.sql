@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Nov-2022 às 12:34
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 07-Nov-2022 às 21:17
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,16 +32,12 @@ CREATE TABLE `categorias` (
   `Nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estrutura da tabela `categoria_has_produto`
+-- Extraindo dados da tabela `categorias`
 --
 
-CREATE TABLE `categoria_has_produto` (
-  `Categoria` int(11) NOT NULL,
-  `Produto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `categorias` (`id`, `Nome`) VALUES
+(1, 'teste');
 
 -- --------------------------------------------------------
 
@@ -68,16 +64,17 @@ CREATE TABLE `produto` (
   `Descricao` varchar(100) NOT NULL,
   `Imagem` varchar(500) NOT NULL,
   `Valor` float NOT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `idCategoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos_pedidos`
+-- Estrutura da tabela `produtos pedidos`
 --
 
-CREATE TABLE `produtos_pedidos` (
+CREATE TABLE `produtos pedidos` (
   `id` int(11) NOT NULL,
   `Produtoid` int(11) NOT NULL,
   `Pedidoid` int(11) NOT NULL,
@@ -126,7 +123,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `username`, `password`) VALUES
-(1, 'biasus', '123');
+(1, 'admin', '123');
 
 --
 -- Índices para tabelas despejadas
@@ -139,13 +136,6 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `categoria_has_produto`
---
-ALTER TABLE `categoria_has_produto`
-  ADD KEY `Categoria_has_Produto_fk0` (`Categoria`),
-  ADD KEY `Categoria_has_Produto_fk1` (`Produto`);
-
---
 -- Índices para tabela `pedido`
 --
 ALTER TABLE `pedido`
@@ -156,16 +146,17 @@ ALTER TABLE `pedido`
 -- Índices para tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Produto_fk0` (`idCategoria`);
 
 --
--- Índices para tabela `produtos_pedidos`
+-- Índices para tabela `produtos pedidos`
 --
-ALTER TABLE `produtos_pedidos`
+ALTER TABLE `produtos pedidos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Produtos_Pedidos_fk0` (`Produtoid`),
-  ADD KEY `Produtos_Pedidos_fk1` (`Pedidoid`),
-  ADD KEY `Produtos_Pedidos_fk2` (`Tamanhoid`);
+  ADD KEY `Produtos Pedidos_fk0` (`Produtoid`),
+  ADD KEY `Produtos Pedidos_fk1` (`Pedidoid`),
+  ADD KEY `Produtos Pedidos_fk2` (`Tamanhoid`);
 
 --
 -- Índices para tabela `quantidade`
@@ -195,7 +186,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
@@ -207,12 +198,12 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `produtos_pedidos`
+-- AUTO_INCREMENT de tabela `produtos pedidos`
 --
-ALTER TABLE `produtos_pedidos`
+ALTER TABLE `produtos pedidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -231,18 +222,11 @@ ALTER TABLE `tamanho`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
 --
-
---
--- Limitadores para a tabela `categoria_has_produto`
---
-ALTER TABLE `categoria_has_produto`
-  ADD CONSTRAINT `Categoria_has_Produto_fk0` FOREIGN KEY (`Categoria`) REFERENCES `categorias` (`id`),
-  ADD CONSTRAINT `Categoria_has_Produto_fk1` FOREIGN KEY (`Produto`) REFERENCES `produto` (`id`);
 
 --
 -- Limitadores para a tabela `pedido`
@@ -251,12 +235,18 @@ ALTER TABLE `pedido`
   ADD CONSTRAINT `Pedido_fk0` FOREIGN KEY (`Usuarioid`) REFERENCES `usuario` (`id`);
 
 --
--- Limitadores para a tabela `produtos_pedidos`
+-- Limitadores para a tabela `produto`
 --
-ALTER TABLE `produtos_pedidos`
-  ADD CONSTRAINT `Produtos_Pedidos_fk0` FOREIGN KEY (`Produtoid`) REFERENCES `produto` (`id`),
-  ADD CONSTRAINT `Produtos_Pedidos_fk1` FOREIGN KEY (`Pedidoid`) REFERENCES `pedido` (`id`),
-  ADD CONSTRAINT `Produtos_Pedidos_fk2` FOREIGN KEY (`Tamanhoid`) REFERENCES `tamanho` (`id`);
+ALTER TABLE `produto`
+  ADD CONSTRAINT `Produto_fk0` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`id`);
+
+--
+-- Limitadores para a tabela `produtos pedidos`
+--
+ALTER TABLE `produtos pedidos`
+  ADD CONSTRAINT `Produtos Pedidos_fk0` FOREIGN KEY (`Produtoid`) REFERENCES `produto` (`id`),
+  ADD CONSTRAINT `Produtos Pedidos_fk1` FOREIGN KEY (`Pedidoid`) REFERENCES `pedido` (`id`),
+  ADD CONSTRAINT `Produtos Pedidos_fk2` FOREIGN KEY (`Tamanhoid`) REFERENCES `tamanho` (`id`);
 
 --
 -- Limitadores para a tabela `quantidade`
