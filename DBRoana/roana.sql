@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Nov-2022 às 21:17
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Tempo de geração: 14-Nov-2022 às 13:40
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,14 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `Nome`) VALUES
-(1, 'teste');
+(1, 'Blusas'),
+(2, 'Calças'),
+(3, 'Casacos'),
+(4, 'Saias'),
+(5, 'Shorts'),
+(6, 'Vestidos'),
+(7, 'Conjuntos'),
+(8, 'Acessórios');
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
@@ -198,7 +205,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `produtos pedidos`
