@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Nov-2022 às 13:40
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 21-Nov-2022 às 20:25
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -122,15 +122,16 @@ CREATE TABLE `tamanho` (
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `username` varchar(35) NOT NULL,
-  `password` varchar(35) NOT NULL
+  `password` varchar(35) NOT NULL,
+  `permission` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `username`, `password`) VALUES
-(1, 'admin', '123');
+INSERT INTO `usuario` (`id`, `username`, `password`, `permission`) VALUES
+(1, 'admin', '123', 0);
 
 --
 -- Índices para tabelas despejadas

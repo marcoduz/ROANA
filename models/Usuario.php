@@ -29,8 +29,8 @@ class Usuario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password'], 'required'],
-            [['username', 'password'], 'string', 'max' => 35],
+            [['username', 'password', 'permission'], 'required'],
+            [['username', 'password', 'permission'], 'string', 'max' => 35],
         ];
     }
 
@@ -43,6 +43,7 @@ class Usuario extends \yii\db\ActiveRecord
             'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
+            'permission' => 'Permission',
         ];
     }
 

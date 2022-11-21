@@ -8,6 +8,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $id;
     public $username;
     public $password;
+    public $permission;
     public $authKey;
     public $accessToken;
 
@@ -113,5 +114,9 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+    public function validatePermission($permission)
+    {
+        return null;
     }
 }
