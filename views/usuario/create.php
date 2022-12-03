@@ -5,10 +5,11 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Usuario $model */
 
-$this->title = 'Create Usuario';
+$this->title = 'Registre-se';
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="col d-flex justify-content-center">
 <div class="usuario-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -17,4 +18,5 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
     ]) ?>
 
+</div>
 </div>

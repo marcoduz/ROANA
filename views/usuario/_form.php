@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /** @var app\models\Usuario $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
-
+<div class="col d-flex justify-content-center">
 <div class="usuario-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -16,10 +16,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
+    <p></p>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Registrar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
+</div>
 </div>
