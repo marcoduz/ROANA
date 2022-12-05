@@ -26,6 +26,11 @@ $this->title = 'Roana';
 
                 <p><a class="btn btn-outline-secondary" href="http://localhost/roana/web/index.php?r=categorias">Categorias</a></p>
             </div>
+            <div class="col-lg-4">
+                <h2>Tamanho</h2>
+
+                <p><a class="btn btn-outline-secondary" href="http://localhost/roana/web/index.php?r=tamanho">Tamanho</a></p>
+            </div>
         </div>
 
     </div>
