@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Nov-2022 às 20:25
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Tempo de geração: 05-Dez-2022 às 14:11
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,6 +60,13 @@ CREATE TABLE `pedido` (
   `Usuarioid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `pedido`
+--
+
+INSERT INTO `pedido` (`Valor`, `id`, `Criado`, `Concluido`, `Usuarioid`) VALUES
+(450, 1, '0000-00-00 00:00:00', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +119,15 @@ CREATE TABLE `tamanho` (
   `Nome` varchar(10) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `tamanho`
+--
+
+INSERT INTO `tamanho` (`Nome`, `id`) VALUES
+('P', 1),
+('M', 2),
+('G', 3);
 
 -- --------------------------------------------------------
 
@@ -200,7 +216,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
@@ -224,7 +240,7 @@ ALTER TABLE `quantidade`
 -- AUTO_INCREMENT de tabela `tamanho`
 --
 ALTER TABLE `tamanho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
